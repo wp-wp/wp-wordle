@@ -1,3 +1,6 @@
+import { WORDS } from "../_data/words";
+
+
 export const getGameState = () => {
   const gameState = JSON.parse(localStorage.getItem("game"));
   if (!gameState) {
@@ -27,11 +30,11 @@ export const getGameStats = () => {
 };
 
 export const getGameSolution = () => {
-  const gameState = JSON.parse(localStorage.getItem("status"));
-  if (!gameState) {
-    return "active";
+  const solution = JSON.parse(localStorage.getItem("solution"));
+  if (!solution) {
+    return WORDS[Math.floor(Math.random()*WORDS.length)];
   }
-  return gameState;
+  return solution;
 };
 
 
@@ -47,6 +50,6 @@ export const setGameStats = (stats) => {
   return localStorage.setItem("stats", JSON.stringify(stats));
 };
 export const setGameSolution = (solution) => {
-  return localStorage.setItem("game", JSON.stringify(solution));
+  return localStorage.setItem("solution", JSON.stringify(solution));
 };
 

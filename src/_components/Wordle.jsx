@@ -5,15 +5,17 @@ import Keyboard from "./Keyboard";
 import { WORDS } from "../_data/words";
 import { checkPosition } from "../_utils/positionCheck";
 import {
+  getGameSolution,
   getGameState,
   getGameStats,
   getGameStatus,
+  setGameSolution,
   setGameState,
   setGameStats,
   setGameStatus,
 } from "../_utils/gameState";
 
-function Wordle({ solution }) {
+function Wordle() {
   const [guess, setGuess] = useState("");
   const [guesses, setGuesses] = useState(getGameState());
   const [game, setGame] = useState(getGameStatus());
@@ -22,6 +24,7 @@ function Wordle({ solution }) {
   const [stats, setStats] = useState(getGameStats());
   const toastTimeout = useRef();
   const shakeTimeout = useRef();
+  const [solution, setSolution] = useState(getGameSolution())
 
   const displayToast = (text) => {
     clearTimeout(toastTimeout.current);
@@ -52,13 +55,16 @@ function Wordle({ solution }) {
     setGuess('')
     setGuesses([])
     setGameState([])
-    console.log(WORDS[Math.floor(Math.random()*WORDS.length)])
-
-    // to do
+    let newSolution=WORDS[Math.floor(Math.random()*WORDS.length)]
+    setSolution(newSolution)
+    setGameSolution(newSolution)
   }
 
   const hitEnter = useCallback(() => {
     let smallText = guess.toLowerCase();
+    if (guesses.length === 0) {
+      setGameSolution(solution)
+    }
     if (smallText.length !== WORD_LENGHT) {
       displayToast("Not enough letters");
       shakeRow();
