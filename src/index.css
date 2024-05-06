@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  height: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #121213;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+body {
+ height: 100%;
+}
+
+h1 {
+  @apply font-bold text-3xl;
+  
+}
+
+.keyrow {
+  @apply flex flex-row justify-start gap-1
+}
+
+.keys {
+  background-color:#818384;
+  @apply rounded-md font-bold text-lg h-14
+}
+
+.smallKey {@apply keys flex-1  }
+.bigKey { @apply flex justify-center items-center keys flex-[2] active:bg-slate-400}
+
+
+.letter{
+  @apply w-16 h-16 border-2 flex justify-center uppercase items-center font-bold text-3xl 
+}
+
+.letterStyle{
+   @apply border-gray-300/50;
+   animation:letterInput 70ms ease-in
+  }
+
+@keyframes letterInput{
+  from{
+    scale:1
+  }
+  to{
+    scale: 1.1;
+  }
+}
+
+.wrong{
+ background-color: #3a3a3c;
+ border:none
+}
+.correct{
+  background-color: #538d4e;
+  border:none
+}
+.wrongPlace{
+  background-color: #b59f3b;
+  border:none
+}
+
+.toast {
+  animation: fade-in 400ms ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.shake {
+  animation: shakeshake 0.35s;
+}
+@keyframes shakeshake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+.stats {
+  border: 1px solid #888888
+}
+
+.flip{
+  animation: flip 650ms ease-in
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.jump {
+  animation: jump 1000ms;
+}
+
+@keyframes jump {
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+  80% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
