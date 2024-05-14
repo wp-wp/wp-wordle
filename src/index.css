@@ -32,19 +32,6 @@ h1 {
   @apply flex flex-row justify-start gap-1
 }
 
-.keys {
-  background-color:#818384;
-  @apply rounded-md font-bold text-lg h-14
-}
-
-.smallKey {@apply keys flex-1  }
-.bigKey { @apply flex justify-center items-center keys flex-[2] active:bg-slate-400}
-
-
-.letter{
-  @apply w-16 h-16 border-2 flex justify-center uppercase items-center font-bold text-3xl 
-}
-
 .letterStyle{
    @apply border-gray-300/50;
    animation:letterInput 70ms ease-in

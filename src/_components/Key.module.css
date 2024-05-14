@@ -1,0 +1,22 @@
+.keys {
+    background-color:#818384;
+    @apply rounded-md font-bold text-lg h-14
+  }
+.smallKey {
+  @apply keys flex-1;
+}
+.bigKey {
+  @apply flex justify-center items-center keys flex-[2] active:bg-slate-400;
+}
+.wrong {
+  background-color: #3a3a3c;
+  border: none;
+}
+.correct {
+  background-color: #538d4e;
+  border: none;
+}
+.wrongPlace {
+  background-color: #b59f3b;
+  border: none;
+}

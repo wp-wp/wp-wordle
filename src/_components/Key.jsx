@@ -1,19 +1,19 @@
 import React from "react";
+import css from './Key.module.css'
+import classNames from 'classnames';
 
 function Key({ letter, onKeyPress, state }) {
-  let className = 'keys '
-  if (letter !== 'Enter' && letter !== 'Backspace') {
-    className += 'smallKey '
-    if (state!=='unsubmitted'){
-      className += state
-    }
-  } else {
-    className += 'bigKey'
-  }
-
   return (
 <button
-  className={className}
+  className={classNames( 
+      {
+        [css.smallKey]: letter !== 'Enter' && letter !== 'Backspace',
+        [css.bigKey]: letter === 'Enter' || letter === 'Backspace',
+        [css.correct]: state === 'correct',
+        [css.wrong]: state === 'wrong',
+        [css.wrongPlace]: state === 'wrongPlace',
+      } 
+  )}
   onClick={() => onKeyPress(letter)}>
   {letter === "Backspace" ? (
                 <svg
