@@ -12,7 +12,7 @@ function Row({ word, position, shake , jump}) {
             key={idx}
             idx={idx}
             singleLetter={word ? word[idx] : ""}
-            position={position ? position[idx] : ""}
+            position={position ? position[idx] : "unsubmitted"}
             flip={true}
             jump={jump}
           />

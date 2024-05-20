@@ -24,9 +24,9 @@ function Letter({ singleLetter, position, flip, idx, jump }) {
       className={classNames("w-16 h-16 border-2 flex justify-center uppercase items-center font-bold text-3xl", {
         "border-gray-300/50": position === "" && !singleLetter,
         [css.letterStyle]: !!singleLetter,
-        [css.correct]: position === "correct" && changeColor,
-        [css.wrong]: position === "wrong" && changeColor,
-        [css.wrongPlace]: position === "wrongPlace" && changeColor,
+        [css.correct]: position === "correct" && color,
+        [css.wrong]: position === "wrong" && color,
+        [css.wrongPlace]: position === "wrongPlace" && color,
         [css.flip]: flip && position !== "",
         [css.jump]: jump,
       })}

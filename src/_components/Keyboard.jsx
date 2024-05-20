@@ -4,7 +4,7 @@ import Key from "./Key";
 
 function Keyboard({ onKeyPress, letterState }) {
   return (
-    <div className="flex flex-col w-full items-center p-4">
+    <div className="flex flex-col w-full items-center p-2">
       <div className="flex flex-col w-full gap-1">
         <div className="keyrow">
           {KEYS.slice(0, 10).map((letter) => {

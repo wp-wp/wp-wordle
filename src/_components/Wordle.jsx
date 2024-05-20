@@ -190,7 +190,7 @@ function Wordle() {
           {toast}
         </div>
       )}
-      <div className=" w-full max-w-lg flex flex-col justify-between items-center py-10 max-h-[720px]">
+      <div className=" w-full max-w-lg flex flex-col justify-between items-center py-8 max-h-[720px]">
         <div className="flex flex-col gap-2">
           {Array.from({ length: GAME_ROUNDS }).map((_, idx) => {
             return (
