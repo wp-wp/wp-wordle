@@ -1,6 +1,10 @@
-Wordle Unlimited Clone
-Tailwind CSS + React (Vite)
-june23/mirko-pc
+#### **Wordle Unlimited Clone**
+*ReactJS+TailwindCSS*
 
-possible changes/todo improve saving game state, better list of words (**solutions**)
+------------
 
+
+To Do:
+- backend --> Node JS
+- day/night theme
+- toast CSS
