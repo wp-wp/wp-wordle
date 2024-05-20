@@ -24,18 +24,13 @@ body {
 }
 
 h1 {
-  @apply font-bold text-3xl;
+  @apply text-3xl font-semibold uppercase;
   
 }
 
 .keyrow {
   @apply flex flex-row justify-start gap-1
 }
-
-.letterStyle{
-   @apply border-gray-300/50;
-   animation:letterInput 70ms ease-in
-  }
 
 @keyframes letterInput{
   from{
@@ -44,19 +39,6 @@ h1 {
   to{
     scale: 1.1;
   }
-}
-
-.wrong{
- background-color: #3a3a3c;
- border:none
-}
-.correct{
-  background-color: #538d4e;
-  border:none
-}
-.wrongPlace{
-  background-color: #b59f3b;
-  border:none
 }
 
 .toast {
@@ -100,46 +82,4 @@ h1 {
 
 .stats {
   border: 1px solid #888888
-}
-
-.flip{
-  animation: flip 650ms ease-in
-}
-
-@keyframes flip {
-  0% {
-    transform: rotateX(0deg);
-  }
-  50% {
-    transform: rotateX(90deg);
-  }
-  100% {
-    transform: rotateX(0deg);
-  }
-}
-
-.jump {
-  animation: jump 1000ms;
-}
-
-@keyframes jump {
-  0%,
-  20% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
-  80% {
-    transform: translateY(2px);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }

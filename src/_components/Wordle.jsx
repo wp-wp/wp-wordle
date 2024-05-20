@@ -5,27 +5,21 @@ import Keyboard from "./Keyboard";
 import { WORDS } from "../_data/words";
 import { checkPosition } from "../_utils/positionCheck";
 import {
-  getGameSolution,
-  getGameState,
-  getGameStats,
-  getGameStatus,
-  setGameSolution,
-  setGameState,
-  setGameStats,
-  setGameStatus,
+  setWordle,
+  getWordle
 } from "../_utils/gameState";
 
 function Wordle() {
   const [guess, setGuess] = useState("");
-  const [guesses, setGuesses] = useState(getGameState());
-  const [game, setGame] = useState(getGameStatus());
+  const [guesses, setGuesses] = useState(getWordle("game"));
+  const [game, setGame] = useState(getWordle("status"));
   const [toast, setToast] = useState("");
   const [shake, setShake] = useState(false);
-  const [stats, setStats] = useState(getGameStats());
+  const [stats, setStats] = useState(getWordle("stats"));
   const toastTimeout = useRef();
   const shakeTimeout = useRef();
-  const [solution, setSolution] = useState(getGameSolution())
-
+  const [solution, setSolution] = useState(getWordle("solution"))
+console.log(game)
   const displayToast = (text) => {
     clearTimeout(toastTimeout.current);
     setToast(text);
@@ -46,24 +40,22 @@ function Wordle() {
 
   const gameStats = (now) => {
     setStats(now);
-    setGameStats(stats);
+    setWordle(guesses,game,stats,solution)
   };
 
   const playAgain = () => {
     setGame('active')
-    setGameStatus("active");
     setGuess('')
     setGuesses([])
-    setGameState([])
     let newSolution=WORDS[Math.floor(Math.random()*WORDS.length)]
     setSolution(newSolution)
-    setGameSolution(newSolution)
+    setWordle(guesses,game,stats,solution)
   }
 
   const hitEnter = useCallback(() => {
     let smallText = guess.toLowerCase();
     if (guesses.length === 0) {
-      setGameSolution(solution)
+      setWordle(guesses,game,stats,solution)
     }
     if (smallText.length !== WORD_LENGHT) {
       displayToast("Not enough letters");
@@ -76,24 +68,24 @@ function Wordle() {
     }
     setGuesses([...guesses, smallText]);
     setGuess("");
-    setGameState([...guesses, smallText]);
+    setWordle([...guesses, smallText],game,stats,solution)
     if (smallText === solution) {
       setGame("won");
-      setGameStatus("won");
       let statsNow = stats;
       statsNow["gamesPlayed"]++;
       statsNow["gamesWon"]++;
-      gameStats(statsNow);     
+      gameStats(statsNow);  
+      setWordle(guesses,game,stats,solution)   
       return;
     }
     if (guesses.length + 1 === GAME_ROUNDS) {
       setGame("lost");
-      setGameStatus("lost");
       displayToast(solution);
       let statsNow = stats;
       statsNow["gamesPlayed"]++;
       statsNow["gamesLost"]++;
       gameStats(statsNow);
+      setWordle(guesses,game,stats,solution)
     }
   }, [guess, guesses, stats, gameStats]);
   const onKeyPress = useCallback(
