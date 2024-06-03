@@ -83,3 +83,9 @@ h1 {
 .stats {
   border: 1px solid #888888
 }
+
+
+.correct {
+  background-color: #538d4e;
+  border: none;
+}
